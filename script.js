@@ -14,6 +14,12 @@ searchInput.addEventListener('input', (e) => {
     filterProducts(e.target.value);
 });
 
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('category-btn')) {
+    filterProducts(e.target.textContent.toLowerCase());
+  }
+});
+
 // Checking throw new Error()
 // getElement('#h2');
 
