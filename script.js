@@ -62,7 +62,17 @@ function displayProducts(products) {
 
 // Create a category button
 // Argument: The category, represented in string format.
-function createBtn(category) {}
+function createBtn(category) {
+  const li = document.createElement('li');
+  const btn = document.createElement('button');
+
+  btn.textContent = category;
+  btn.setAttribute('class', 'category-btn');
+  
+  li.appendChild(btn);
+  
+  return li;
+}
 
 // Handle input
 // Argument: a string representation of a category, used to compare against categories of products
