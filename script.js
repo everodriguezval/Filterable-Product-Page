@@ -87,7 +87,15 @@ function filterProducts(value) {
 
 // Display category buttons
 // Argument: An array of products
-function displayCategories(products) {}
+function displayCategories(products) {
+  const parsedCategories = parseCategories(products);
+
+  btnContainer.appendChild(createBtn("All"));
+
+  parsedCategories.forEach((category) => {
+    btnContainer.appendChild(createBtn(category));
+  });
+}
 
 // Gather all categories from products data
 // Argument: An array of products
@@ -114,16 +122,15 @@ function parseCategories(products) {
     // Converting the first character of the category string to a capital letter, and concatenating that with the rest of the string 
     return category.charAt(0).toUpperCase() + category.substr(1);
   });
-
-  console.log(categories);
+  // console.log(categories);
+  return categories;
 }
-
-parseCategories(data.products);
 
 // Display initial products list and category buttons
 // No arguments
 function init() {
     displayProducts(data.products);
+    displayCategories(data.products);
 }
 
 init();
