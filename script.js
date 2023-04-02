@@ -85,14 +85,25 @@ function filterProducts(value) {
     displayProducts(filteredProducts);
 }
 
-
 // Display category buttons
 // Argument: An array of products
 function displayCategories(products) {}
 
 // Gather all categories from products data
 // Argument: An array of products
-function parseCategories(products) {}
+function parseCategories(products) {
+  let categories = products.reduce((arr, product) => {
+    if (!arr.includes(product.category)) {
+      arr.push(product.category);
+    }
+
+    return arr;
+  }, []);
+
+  console.log(categories);
+}
+
+parseCategories(data.products);
 
 // Display initial products list and category buttons
 // No arguments
