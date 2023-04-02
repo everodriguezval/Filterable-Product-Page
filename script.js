@@ -5,10 +5,15 @@ const searchInput = getElement('#search');
 const btnContainer = getElement('#btn-container');
 const productContainer = getElement('#productslist-container');
 
-console.log(searchInput);
-console.log(btnContainer);
-console.log(productContainer);
+// console.log(searchInput);
+// console.log(btnContainer);
+// console.log(productContainer);
 
+searchInput.addEventListener('input', (e) => {
+    console.log(e.target.value)
+});
+
+// Checking throw new Error()
 // getElement('#h2');
 
 // Grab element from the DOM
