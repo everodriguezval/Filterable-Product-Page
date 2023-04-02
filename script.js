@@ -17,6 +17,8 @@ searchInput.addEventListener('input', (e) => {
 document.addEventListener('click', (e) => {
   if (e.target.classList.contains('category-btn')) {
     filterProducts(e.target.textContent.toLowerCase());
+  } else {
+    return;
   }
 });
 
@@ -83,9 +85,20 @@ function createBtn(category) {
 // Handle input
 // Argument: a string representation of a category, used to compare against categories of products
 function filterProducts(value) {
+    if (value === 'all') {
+      displayProducts(data.products);
+      return;
+    }
+
     const filteredProducts = data.products.filter((product) => {
-        console.log(product)
+      // fixing home-decoration category 
+      if (value.split(' ').length > 1) {
+        return product.category.includes(value.split(" ").join("-"));
+      } else {
         return product.category.includes(value);
+      }
+      // console.log(product)
+      
     });
 
     displayProducts(filteredProducts);
