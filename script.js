@@ -100,6 +100,21 @@ function parseCategories(products) {
     return arr;
   }, []);
 
+  // console.log(categories);
+  categories = categories.map(category => {
+    if (category.includes('-')) {
+      const splitCategory = category
+        .split("-")
+        .map((str) => {
+          return str.charAt(0).toUpperCase() + str.substr(1);
+        })
+        .join(" ");
+      return splitCategory;
+    }
+    // Converting the first character of the category string to a capital letter, and concatenating that with the rest of the string 
+    return category.charAt(0).toUpperCase() + category.substr(1);
+  });
+
   console.log(categories);
 }
 
