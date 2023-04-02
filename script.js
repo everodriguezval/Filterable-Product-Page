@@ -1,3 +1,6 @@
+import { data } from "./data.js";
+// console.log(data);
+
 const searchInput = getElement('#search');
 const btnContainer = getElement('#btn-container');
 const productContainer = getElement('#productslist-container');
@@ -21,7 +24,31 @@ function getElement(identifier) {
 
 // Display list of products
 // Argument: An array of products
-function displayProducts(products) {}
+function displayProducts(products) {
+    const productList = products.map((product) => {
+        const { title, price, brand, rating, thumbnail } = product;
+        return `
+    <div class='product-wrapper'>
+      <div class='rating'>
+        <p>Rating: ${rating}</p>
+      </div>
+      <div class='product-info'>
+        <div class='product-img'>
+          <img src='${thumbnail}' alt='${title}'/>
+        </div>
+        <div class='product-detail'>
+          <h2>${title}</h2>
+          <p>${brand}</p>
+          <p>${price}.00</p>
+        </div>
+      </div>
+    </div>
+  `;
+    })
+    .join("");
+
+    productContainer.innerHTML = productList;
+}
 
 // Create a category button
 // Argument: The category, represented in string format.
@@ -41,4 +68,8 @@ function parseCategories(products) {}
 
 // Display initial products list and category buttons
 // No arguments
-function init() {}
+function init() {
+    displayProducts(data.products);
+}
+
+init();
