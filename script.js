@@ -10,7 +10,8 @@ const productContainer = getElement('#productslist-container');
 // console.log(productContainer);
 
 searchInput.addEventListener('input', (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
+    filterProducts(e.target.value);
 });
 
 // Checking throw new Error()
@@ -61,7 +62,15 @@ function createBtn(category) {}
 
 // Handle input
 // Argument: a string representation of a category, used to compare against categories of products
-function filterProducts(value) {}
+function filterProducts(value) {
+    const filteredProducts = data.products.filter((product) => {
+        console.log(product)
+        return product.category.includes(value);
+    });
+
+    displayProducts(filteredProducts);
+}
+
 
 // Display category buttons
 // Argument: An array of products
