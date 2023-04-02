@@ -1,5 +1,5 @@
 import { data } from "./data.js";
-// console.log(data);
+console.log(data);
 
 const searchInput = getElement('#search');
 const btnContainer = getElement('#btn-container');
@@ -30,8 +30,11 @@ function getElement(identifier) {
 
 // Display list of products
 // Argument: An array of products
-function displayProducts(products) {
-    const productList = products.map((product) => {
+function displayProducts(products) {   
+    if (!products || products.length === 0) {
+      productContainer.innerHTML = "<h2 class='no-results'>No results</h2>";
+    } else {
+      const productList = products.map((product) => {
         const { title, price, brand, rating, thumbnail } = product;
         return `
     <div class='product-wrapper'>
@@ -54,6 +57,7 @@ function displayProducts(products) {
     .join("");
 
     productContainer.innerHTML = productList;
+    }
 }
 
 // Create a category button
